@@ -1,0 +1,59 @@
+﻿<Window x:Class="Helloble.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Helloble"
+        mc:Ignorable="d"
+        Title="MainWindow" MaxHeight="450" MinHeight="450" MinWidth="850" MaxWidth="850">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="211*" />
+            <RowDefinition Height="209*"/>
+        </Grid.RowDefinitions>
+        <Button Name="Enumerate" 
+                Click="Enumerate_Click" Padding="0" Margin="10,10,657.6,170.2" Width="120">Enumerate</Button>
+        <Button Name="Disconnect" 
+                Click="Disconnect_Click"  Padding="0" Margin="161,10,506.6,170.2" Width="120">Disconnect</Button>
+        <ListView Margin="10,46,0,39" Name="ListDevice"
+                  SelectionChanged="ListDevice_SelectionChanged"
+                  HorizontalAlignment="Left"
+                  Grid.RowSpan="2" Width="250" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Devices" Width="250" DisplayMemberBinding="{Binding LongName}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView Margin="0,46,277.6,39" Name="ListServices"
+                  SelectionChanged="ListServices_SelectionChanged" 
+                  HorizontalAlignment="Right" 
+                  Width="250" Grid.RowSpan="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Services" Width="250" DisplayMemberBinding="{Binding Uuid}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView Margin="0,46,9.6,1.2" Name="ListCharacteristics"
+                  SelectionChanged="ListCharacteristics_SelectionChanged"
+                  HorizontalAlignment="Right"
+                  Width="250">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Characteristics" Width="250" DisplayMemberBinding="{Binding Uuid}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView Margin="534,3.8,9.6,39" Name="ListData"
+                  SelectionChanged="ListDevice_SelectionChanged" 
+                  HorizontalAlignment="Right"
+                  Grid.Row="1" Width="250">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Packet" Width="250" DisplayMemberBinding="{Binding Sequence}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
